@@ -279,7 +279,7 @@ fullLSimplex = function(X, naive = NULL){
     res2 = kSD_Cfull2(sgn,rnk)
     # full-1-simplex
     S = sign(X[order(XR),1])
-    res = sum(KDepth::KSign(S, 3)[3,])
+    res = sum(SignDepth::KSign(S, 3)[3,])
     res1 = res
   } else {
     # S<- sign(X[,2])

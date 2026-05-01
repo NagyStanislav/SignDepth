@@ -1,7 +1,7 @@
 Package: SignDepth
 Type: Package
 Title: Sign depths for one-dimensional and bivariate data
-Version: 0.1.7
+Version: 0.1.8
 Author: Stanislav Nagy
 Maintainer: Stanislav Nagy <nagy@karlin.mff.cuni.cz>
 Description: Fast C++ and R implementation of the K-sign depth for univariate data, simplified 1-simplex depth and 2-simplex depth for bivariate data, and the full 2-simplex depth for bivariate data.
