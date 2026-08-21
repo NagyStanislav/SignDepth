@@ -19,4 +19,4 @@ help(package="SignDepth")
 
 All major functions in the package are implemented both in R and in C++ for computational efficacy.
 
-- Christine H. Müller, Stanislav Nagy, and Samuel Trippler. (2025). Bivariate and multivariate sign depth and related distribution-free tests for model fit. _Under review._
+- Christine H. Müller, Stanislav Nagy, and Samuel Trippler. (2026). Bivariate and multivariate sign depth and related distribution-free tests for model fit. _Metrika,_ [link](https://doi.org/10.1007/s00184-026-01041-6).
