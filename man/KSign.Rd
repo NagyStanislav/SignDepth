@@ -4,18 +4,18 @@
 \alias{KSign}
 \title{\code{K}-sign depth for univariate data}
 \usage{
-KSign(x, k, naive = FALSE)
+KSign(x, K, naive = FALSE)
 }
 \arguments{
 \item{x}{A vector of -1 and +1 of length \code{n}. These
 are typically the signs of the residuals (-1 for negative sign,
 +1 for positive sign).}
 
+\item{K}{Positive integer, the parameter of the depth.}
+
 \item{naive}{Logical indicator whether the naive implementation
 in R should be used. By default set to \code{FALSE}. Use \code{FALSE}
 in all situations, the naive regime is only for checking and comparison.}
-
-\item{K}{Positive integer, parameter of the depth.}
 }
 \value{
 If \code{naive=FALSE}:

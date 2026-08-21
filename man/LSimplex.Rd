@@ -20,11 +20,11 @@ or full) 2-simplex depth are computed.}
 or \code{full}.}
 }
 \value{
-A vector of length \code{2}, both elements are numeric values
-between 0 and 1. First element is the (simplified or full)
-\code{1}-simplex depth. The second element it the (simplified or full)
-\code{2}-simplex depth. If \code{L=1}, the second element of the vector is
-set to be zero.
+If \code{L=1}, a single numerical value with the (simplified or full)
+\code{1}-simplex depth. If \code{L=2}, a vector of length \code{2}, both 
+elements are numeric values between 0 and 1. The first element is the 
+(simplified or full) \code{1}-simplex depth. The second element it the 
+(simplified or full) \code{2}-simplex depth.
 }
 \description{
 Wrapper function for the fastest C++ implementations of the algorithms for

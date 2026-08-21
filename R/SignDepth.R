@@ -14,7 +14,7 @@
 #' are typically the signs of the residuals (-1 for negative sign,
 #' +1 for positive sign).
 #'
-#' @param K Positive integer, parameter of the depth.
+#' @param K Positive integer, the parameter of the depth.
 #'
 #' @param naive Logical indicator whether the naive implementation
 #' in R should be used. By default set to \code{FALSE}. Use \code{FALSE}
@@ -48,22 +48,22 @@
 #' K = 3
 #' sum(KSign(x,K)[K,])==KSign(x,K,naive=TRUE)
 
-KSign = function(x,k,naive = FALSE){
+KSign = function(x,K,naive = FALSE){
   if(any(x^2!=1)) stop("x must be a vector of +1 and -1")
   if(naive){
     # find all K-element subsets of x and check condition one-by-one
     n = length(x)
-    C = combn(n,k)
+    C = combn(n,K)
     m = 0
     for(i in 1:ncol(C)){
-      if(all(x[C[-1,i]]!=x[C[-k,i]])) m = m+1
+      if(all(x[C[-1,i]]!=x[C[-K,i]])) m = m+1
     }
     return(m)
   } else {
-    res = altern_Craw2(x, k)
+    res = altern_Craw2(x, K)
     res = res[-1,]
     colnames(res) = c("last-","last+")
-    rownames(res) = 1:k
+    rownames(res) = 1:K
     return(res)
   }
 }
@@ -313,11 +313,11 @@ fullLSimplex = function(X, naive = NULL){
 #' @param type Type of the depth to compute. Can take values \code{simplified}
 #' or \code{full}.
 #'
-#' @return A vector of length \code{2}, both elements are numeric values
-#' between 0 and 1. First element is the (simplified or full)
-#' \code{1}-simplex depth. The second element it the (simplified or full)
-#' \code{2}-simplex depth. If \code{L=1}, the second element of the vector is
-#' set to be zero.
+#' @return If \code{L=1}, a single numerical value with the (simplified or full)
+#' \code{1}-simplex depth. If \code{L=2}, a vector of length \code{2}, both 
+#' elements are numeric values between 0 and 1. The first element is the 
+#' (simplified or full) \code{1}-simplex depth. The second element it the 
+#' (simplified or full) \code{2}-simplex depth. 
 #'
 #' @seealso \link{simplLSimplex} and \link{fullLSimplex} for an implementation
 #' of the simplified and full versions of the 1-simplex and 2-simplex depth,
@@ -332,11 +332,11 @@ fullLSimplex = function(X, naive = NULL){
 LSimplex = function(X, L=2, type=c("simplified", "full")){
   K = L
   type = match.arg(type)
-  if(type=="simplified") return(simplLSimplex(X,K))
-  if(type=="full") if(K==2) return(fullLSimplex(X)) else {
+  if(type=="simplified") return(simplLSimplex(X,K)[1:L])
+  if(type=="full") if(K==2) return(fullLSimplex(X)[1:L]) else {
     x = X[order((X[,2]) / (X[,1])),1]
     res = sum(KSign(sign(x), 3)[3,])/choose(length(x),3)
-    return(res)
+    return(res[1:L])
     # return(ddalpha::depth.simplicial(c(0,0),data=X,exact=TRUE))
   }
 }
